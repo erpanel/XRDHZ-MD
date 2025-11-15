@@ -15,11 +15,6 @@
   
 </div>
 
-<p align="center">
-  <img src="https://img.shields.io/github/stars/Ridhx/XRDHZ-MD?style=social" alt="Stars">
-  <img src="https://img.shields.io/github/forks/Ridhx/XRDHZ-MD?style=social" alt="Forks">
-</p>
-
 ---
 
  **Base Script WhatsApp Tipe ESM Ringan, Cepat, dan Modern.** Dibangun dengan **[Baileys](https://github.com/Whiskeysockets/Baileys)** menggunakan **ECMAScript Modules (ESM)**. Dirancang untuk mudah digunakan, dan dapat dikembangkan lebih lanjut sesuai kebutuhan.
@@ -43,6 +38,14 @@
 ---
 
 ## 📋 **Instalasi Script**
+
+**1. Software yang diperlukan :**
+- [Git](https://git-scm.com)
+- [Node.js](https://nodejs.org/id) (v20+)
+- [ImageMagick](https://imagemagick.org)
+- [FFmpeg](https://ffmpeg.org)
+
+**2. Deploy Script :**
 
 ```bash
 git clone https://github.com/ridhx/XRDHZ-MD.git
@@ -68,8 +71,9 @@ npm start
 
 *Terima kasih kepada kontributor atas kontribusinya dalam script ini!*
 <p>
-<a href="https://github.com/WhiskeySockets" target="_blank"><img alt="Github" src="https://github.com/WhiskeySockets.png?size=60" /></a>
-<a href="https://github.com/XM4ZE" target="_blank"><img alt="XM4ZE" src="https://github.com/XM4ZE.png?size=60" /></a>
+<a href="https://github.com/WhiskeySockets" target="_blank"><img alt="Bailyes" src="https://github.com/WhiskeySockets.png?size=60" width="50px" /></a>
+<a href="https://github.com/XM4ZE" target="_blank"><img alt="XM4ZE" src="https://github.com/XM4ZE.png?size=60" width="50px" /></a>
+<a href="https://github.com/RavaAchmad" target="_blank"><img alt="Rava" src="https://github.com/RavaAchmad.png?size=60" width="50px" /></a>
 </p>
 
 ---
