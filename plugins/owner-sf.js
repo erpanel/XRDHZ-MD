@@ -1,16 +1,24 @@
 import fs from 'fs'
 
-let handler = async (m, { text, usedPrefix, command }) => {
-    if (!text) return m.reply('Masukan Pathnya');
-    if (!m.quoted.text) throw `balas codenya!`
-    let path = `${text}`
-    await fs.writeFileSync(path, m.quoted.text)
-    m.reply(`File Berhasil di simpan ${path}`)
+let handler = async (m, { text, usedPrefix, command}) => {
+    if (!text) return m.reply(`⚠️ Masukkan path tujuan penyimpanan.\n\nContoh:\n${usedPrefix + command}./plugins/test.js`)
+
+    if (!m.quoted || typeof m.quoted.text!== 'string') {
+        return m.reply('⚠️ Balas pesan yang berisi kode teks yang ingin disimpan.')
 }
 
-handler.command = /^(sf)$/i;
-handler.help = ['sf'];
-handler.tags = ['owner'];
-handler.owner = true;
+    try {
+        fs.writeFileSync(text, m.quoted.text)
+        m.reply(`✅ File berhasil disimpan ke: ${text}`)
+} catch (err) {
+        console.error(err)
+        m.reply(`❌ Gagal menyimpan file:\n${err.message}`)
+}
+}
+
+handler.command = /^(sf)$/i
+handler.help = ['sf']
+handler.tags = ['owner']
+handler.owner = true
 
 export default handler
