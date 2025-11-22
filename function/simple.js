@@ -79,17 +79,16 @@ export function makeWASocket(connectionOptions, options = {}) {
       // conn.getNumber
       getNumber: {
          value(sender) {
+            if (!conn.storeNumber) conn.storeNumber = {};
             if (!sender || typeof sender !== "string") return "";
             if (sender.endsWith("@s.whatsapp.net")) return sender.split("@")[0];
 
-            if (!conn.storeNumber) conn.storeNumber = {};
             if (conn.storeNumber[sender]) return conn.storeNumber[sender];
             for (let chat of Object.values(conn.chats)) {
                if (!chat.metadata?.participants) continue;
-               let user = chat.metadata.participants.find(p => p.id === sender);
-               if (user) {
-                  return (conn.storeNumber[sender] = (user?.phoneNumber).split("@")[0]);
-               }
+               const user = chat.metadata.participants.find(p => p.id === sender);
+               if (!user || !user.phoneNumber) continue;
+               if (user) return conn.storeNumber[sender] = (user?.phoneNumber).split("@")[0];
             }
             return sender;
          }
@@ -107,9 +106,7 @@ export function makeWASocket(connectionOptions, options = {}) {
                   const participants = chat.metadata?.participants;
                   if (!participants) continue;
                   const user = participants.find(p => p.phoneNumber === decoded);
-                  if (user?.id) {
-                     return (conn.storeLid[decoded] = jidNormalizedUser(user.id));
-                  }
+                  if (user?.id) return (conn.storeLid[user.phoneNumber] = jidNormalizedUser(user.id));
                }
             }
             return decoded;
